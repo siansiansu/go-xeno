@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/siansiansu/go-xeno"
+	"github.com/siansiansu/go-xeno/xeno"
 )
 
 var (
