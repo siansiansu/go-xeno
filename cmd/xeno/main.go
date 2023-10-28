@@ -39,7 +39,7 @@ download audio recordings from xeno-canto
 `,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 0 {
-			fmt.Println("please input the search query! Example: xeno \"Taiwan blue magpie\"")
+			cmd.Help()
 			os.Exit(0)
 		}
 
