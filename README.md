@@ -45,12 +45,6 @@ func main() {
 }
 ```
 
-## CLI
-
-```
-
-```
-
 ## Contributing
 
 Contributions are welcome! Report bugs or request features by opening an issue. If you want to contribute code, fork the repository and submit a pull request.
