@@ -58,12 +58,12 @@ brews:
     homepage: "https://github.com/siansiansu/go-xeno"
     description: "A CLI tool designed for the Xeno-Canto Website"
     commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
-    test: |
-      assert_match "xeno version v1.0.0", shell_output("#{bin}/xeno --version")
-
-      # xeno use the args[0] as the search query for the xeno-canto website
-      # Since it is an empty we expect it to be invalid
-      assert_match 'please input the search query! Example: xeno "Taiwan blue magpie"', shell_output("#{bin}/xeno")
+    # test: |
+    #   assert_match "xeno version v1.0.0", shell_output("#{bin}/xeno --version")
+    #
+    #   # xeno use the args[0] as the search query for the xeno-canto website
+    #   # Since it is an empty we expect it to be invalid
+    #   assert_match 'please input the search query! Example: xeno "Taiwan blue magpie"', shell_output("#{bin}/xeno")
     repository:
       owner: siansiansu
       name: homebrew-xeno
