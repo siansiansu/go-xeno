@@ -1,0 +1,81 @@
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  -
+    binary: argocd-{{ .Os}}-{{ .Arch}}
+    main: ./cmd/xeno
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+      - s390x
+      - ppc64le
+    ignore:
+      - goos: darwin
+        goarch: s390x
+      - goos: darwin
+        goarch: ppc64le
+      - goos: windows
+        goarch: s390x
+      - goos: windows
+        goarch: ppc64le
+      - goos: windows
+        goarch: arm64
+
+checksum:
+  name_template: 'checksums.txt'
+  algorithm: sha256
+
+source:
+  enabled: true
+
+archives:
+  - format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
+    format_overrides:
+      - goos: windows
+        format: zip
+
+brews:
+  -
+    name: xeno
+    license: "MIT"
+    homepage: "https://github.com/siansiansu/go-xeno"
+    description: "A CLI tool designed for the Xeno-Canto Website"
+    commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
+    test: |
+      assert_match "xeno version v1.0.0", shell_output("#{bin}/xeno --version")
+
+      # xeno use the args[0] as the search query for the xeno-canto website
+      # Since it is an empty we expect it to be invalid
+      assert_match 'please input the search query! Example: xeno "Taiwan blue magpie"', shell_output("#{bin}/xeno")
+    repository:
+      owner: siansiansu
+      name: homebrew-xeno
+      branch: main
+    commit_author:
+      name: Alex Su
+      email: minsiansu@gmail.com
+
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
