@@ -2,7 +2,7 @@
 
 [![GoDoc](https://godoc.org/github.com/siansiansu/go-xeno?status.svg)](http://godoc.org/github.com/siansiansu/go-xeno) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Go-Xeno is a simple client for integrating Xeno-Canto API V2.
+Go-Xeno is a simple client for integrating [Xeno-Canto](https://xeno-canto.org/) API V2.
 
 ## Installation
 
