@@ -4,7 +4,7 @@ before:
 
 builds:
   -
-    binary: argocd-{{ .Os}}-{{ .Arch}}
+    binary: xeno
     main: ./cmd/xeno
     ldflags:
       - -s -w -X main.version={{.Version}}
