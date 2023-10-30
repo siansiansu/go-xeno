@@ -1,20 +1,20 @@
-# Xeno-Canto Client for Go
+# Xeno-Canto CLI
 
 [![GoDoc](https://godoc.org/github.com/siansiansu/go-xeno?status.svg)](http://godoc.org/github.com/siansiansu/go-xeno) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-go-xeno is a Go API wrapper and a cli tool for integrating [Xeno-Canto](https://xeno-canto.org/) API V2.
+`go-xeno` is a cli tool for integrating [Xeno-Canto](https://xeno-canto.org/) API V2.
 
 ## Installation
 
-To use go-xeno in your Go module, you can simply run:
+Make sure you have Go installed. Then, run the following command:
 
 ```bash
-go get -u github.com/siansiansu/go-xeno
+go get -u github.com/siansiansu/go-xeno/cmd/xeno
 ```
 
-## Homebrew
+This command will download the xeno tool to your Go workspace.
 
-To use go-xeno CLI in macOS, you can simply run:
+Use homebrew:
 
 ```bash
 brew tap siansiansu/xeno
@@ -23,7 +23,29 @@ brew install xeno
 
 ## Usage
 
-Here's an example of how you can use go-xeno:
+To use `xeno`, run the following command:
+
+Download all the audio recordings.
+
+```bash
+xeno "Eurasian Tree Sparrow"
+```
+
+Only download 1 audio recording.
+
+```bash
+xeno "Eurasian Tree Sparrow" --max-results 1
+```
+
+View help and available commands:
+
+```bash
+xeno help
+```
+
+## Package
+
+Here's an example demonstrating the usage of the `go-xeno` package in Go code:
 
 ```go
 package main
@@ -52,12 +74,6 @@ func main() {
     fmt.Println(e.Rec, e.Loc, e.File)
   }
 }
-```
-
-Or just using go-xeno CLI to download audio recordings:
-
-```bash
-xeno "Eurasian Tree Sparrow" --max-results 1
 ```
 
 ## Contributing
